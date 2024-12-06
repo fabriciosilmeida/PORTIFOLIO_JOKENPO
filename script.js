@@ -3,31 +3,34 @@ const machine = document.getElementById("machine");
 const gain    = document.getElementById("gain");
 const loss    = document.getElementById("loss");
 
+const HAND = {R:"rock", P:"paper", S:"scissor"}
+const STATUS = {D:"draw", L:"loss", G:"gain"}
+
 const url = "./assets/img/";
 
 function playUser(changeUser) {
     const changeMachine = playMachine();
 
     // Pedra e Pedra
-    (changeUser == "rock" && changeMachine == "rock") && panel('draw');
+    (changeUser == HAND.R && changeMachine == HAND.R) && panel(STATUS.D);
     // Pedra e Papel
-    (changeUser == "rock" && changeMachine == "paper") && panel('loss');
+    (changeUser == HAND.R && changeMachine == HAND.P) && panel(STATUS.L);
     // Pedra e Tesoura
-    (changeUser == "rock" && changeMachine == "scissor") && panel('gain');
+    (changeUser == HAND.R && changeMachine == HAND.S) && panel(STATUS.G);
 
     // Papel e Papel
-    (changeUser == "paper" && changeMachine == "paper") && panel('draw');
+    (changeUser == HAND.P && changeMachine == HAND.P) && panel(STATUS.D);
     // Papel e Pedra
-    (changeUser == "paper" && changeMachine == "rock") && panel('gain');
+    (changeUser == HAND.P && changeMachine == HAND.R) && panel(STATUS.G);
     // Papel e Tesoura
-    (changeUser == "paper" && changeMachine == "scissor") && panel('loss');
+    (changeUser == HAND.P && changeMachine == HAND.S) && panel(STATUS.L);
 
     // Tesoura e Tesoura
-    (changeUser == "scissor" && changeMachine == "scissor") && panel('draw');
+    (changeUser == HAND.S && changeMachine == HAND.S) && panel(STATUS.D);
     // Tesoura e Pedra
-    (changeUser == "scissor" && changeMachine == "rock") && panel('loss');
+    (changeUser == HAND.S && changeMachine == HAND.R) && panel(STATUS.L);
     // Tesoura e Papel
-    (changeUser == "scissor" && changeMachine == "paper") && panel('gain');
+    (changeUser == HAND.S && changeMachine == HAND.P) && panel(STATUS.G);
 }
 
 function playMachine() {
@@ -38,18 +41,18 @@ function playMachine() {
     switch (result) {
         case 1:
             machine.src = url+'rock.png'; 
-            return "rock";
+            return HAND.R;
         case 2:
             machine.src = url+'paper.png'; 
-            return "paper";
+            return HAND.P;
         case 3: 
             machine.src = url+'scissor.png'; 
-            return "scissor";
+            return HAND.S;
     }
 }
 
 function panel(result) {
-    result == 'draw' && (judge.innerText = "EMPATE"); 
-    result == 'gain' && (gain.innerText++, judge.innerText = "VENCEU");
-    result == 'loss' && (loss.innerText++, judge.innerText = "PERDEU");
+    result == STATUS.D && (judge.innerText = "EMPATE"); 
+    result == STATUS.G && (gain.innerText++, judge.innerText = "VENCEU");
+    result == STATUS.L && (loss.innerText++, judge.innerText = "PERDEU");
 }

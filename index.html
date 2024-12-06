@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOKENPÔ</title>
+</head>
+
+<body>
+    <header>
+        <div id="judge">RESULTADO</div>
+    </header>
+
+    <main>
+        <div class="container">
+            <img src="./assets/img/doubt.png" id="machine">
+        </div>
+
+        <div class="container">
+            <div class="panel">
+                <p id="label-gain">GAIN</p>
+                <p id="gain" class="point">0</p>
+            </div>
+            <div class="panel">
+                <p id="label-loss">LOSS</p>
+                <p id="loss" class="point">0</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <img src="./assets/img/rock.png" id="rock" onclick="playUser('rock')">
+            <img src="./assets/img/paper.png" id="paper" onclick="playUser('paper')">
+            <img src="./assets/img/scissor.png" id="scissor" onclick="playUser('scissor')">
+        </div>
+    </main>
+
+    <footer>
+        JOKENPÔ
+    </footer>
+</body>
+
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+
+</html>
